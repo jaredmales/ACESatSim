@@ -61,5 +61,8 @@ primary.aberrations = phase_error(primary.N, 2, 0.1e-9/sqrt(3.7)); % last parame
 optics.primary = primary;
 optics.PIAA = PIAA;
 
+optics.flD_ref = optics.primary.f*(0.5*1e-6)/optics.primary.Dx;
+
+
 optics.coronagraph = 1;
 

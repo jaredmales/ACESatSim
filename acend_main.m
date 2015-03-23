@@ -1,4 +1,4 @@
-function acend_main(star, bandno)
+function acend_main(star, bandno, outputdir)
 
 
 %% Mission Set Up
@@ -13,7 +13,7 @@ else
    newoptics = false;
 end
 
-missionLength = 0.5; % length of mission in years
+missionLength = 2.0; % length of mission in years
 cadence = 1;      % time in days between observing in the same bandpass
 
 dwell = 24.0/24.0; % time in days spent in the bandpass
@@ -24,7 +24,7 @@ if(star == 2)
    startday = startday + 0.5*cadence;
 end
 
-outputdir = 'images038';
+%outputdir = 'images038';
 
 
 
@@ -80,7 +80,7 @@ Ag1 = aCEND_albedo(bandno, 'earth');
 Ag2 = aCEND_albedo(bandno, 'rmars');
 Ag3 = aCEND_albedo(bandno, 'venus');
 
-planet = planet_initialize(stars(1), 11.0, Ag1, orbitPlanet, ts/86400.);
+planet = planet_initialize(stars(1), 1.0, Ag1, orbitPlanet, ts/86400.);
 planet2 = planet_initialize(stars(1), 1., Ag2, orbitPlanet2, ts/86400.);
 planet3 = planet_initialize(stars(1), 0.95, Ag3, orbitPlanet3, ts/86400.0);
 noplanet = planet_initialize(stars(1), 1.0, 0, orbitPlanet, ts/86400.);
@@ -106,14 +106,17 @@ sources = astrophysics_initialize(stars, planets);
 %% Optics and Disturbances
 optics = optics_initialize;
 
-flD = optics.primary.f*(filter.lambda*1e-6)/optics.primary.Dx;
-flD_ref = optics.primary.f*(0.5*1e-6)/optics.primary.Dx;
-sci = sci_detector_initialize(flD_ref, dt);
+%flD = optics.primary.f*(filter.lambda*1e-6)/optics.primary.Dx;
+
+%flD_ref = optics.primary.f*(0.5*1e-6)/optics.primary.Dx;
+
+sci = sci_detector_initialize(optics.flD_ref, dt);
 
 make_psf( stars(1), optics, sci, filter, outputdir);
 
 sci.noise=0;
 
+%optics.primary.aberrations = optics.primary.aberrations*0;
 if newoptics
    fprintf(1,'Initializing aberrations\n');
    space_alpha = 2.0;
@@ -154,7 +157,7 @@ for n = 1:Nframes
     fprintf(1, '%d/%d\n', n, Nframes);
     %Set current abberation
     nsamp = ts(n)/dt+1;
-    optics.primary.aberrations = abber(:,:,nsamp);
+    %optics.primary.aberrations = abber(:,:,nsamp);
    
     %compute science frame
     sci.E = optics_propagate(sources, optics, sci, filter.lambda*1e-6, disturbances(n), n);

@@ -1,0 +1,33 @@
+
+Changes from V2.2.Jared:
+- sources is now an array of structures
+   - astrophysics_initialize.m updated
+   - optics_propagate.m updated
+
+- Created orbit class
+   - added orbit.m to define the class
+   - this class contains the orbital elements
+   - methods to caculate period and x/y/r, etc.
+   - star_initialize and planet_initialize now take an object of type orbit as an argument  
+
+- Added 2nd star
+   - star_initialize now projects an orbit for the star (handling a=0 for the main star)
+   - planet_initialize now projects planet position relative to star position (x(t), y(t))
+   - astrophysics_initialize now accepts arrays of structures for both stars and planets
+   - main.m now adds alpha Cen B with the elements of Pourbaix 2002
+   - result is 3 sources: 2 stars and 1 planet orbiting star 1.
+   
+   
+Changes in V2.3.Jared (photons):
+- Now initialize star with either star name ('acenA' or 'acenB') or a spectral type ('G2') and distance.
+- Blackbody used to determine photons/m^2/micron/sec at central wavelength
+- Multiplied by filter width
+- New files:
+   astrophysics/photometry/blackbody_phot.m
+   astrophysics/sptype_numeric.m
+   astrophysics/sptype_params.m
+- Changed files:
+   main.m
+   star_initialize.m
+   astrophysics_initialize.m
+   

@@ -13,7 +13,7 @@ for j = 1:length(sources)
 
     if(optics.coronagraph == 0)
     %% No Coronagraph
-      exitpup = primary;
+      exitpup = primary; 
      
     end
     %% Coronagraph case #1: ideal coronagraph

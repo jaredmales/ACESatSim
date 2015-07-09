@@ -1,3 +1,5 @@
+%this tests the correspondance between generated variance of the mean and
+%theory.
 
 alpha = 0:0.25:4.0;
 alpha(3)=1.001;

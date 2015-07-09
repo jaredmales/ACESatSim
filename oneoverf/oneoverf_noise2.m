@@ -6,8 +6,8 @@ function cnoise = oneoverf_noise2(nsamps, oversamp, alpha, arg4, arg5)
 %              is used to add low-spatial frequency information to the
 %              noise, and helps avoid edge effects.  An image of 
 %              size (nsamps*oversamp)^2 is generated and filtered, and the 
-%              central nsamps*nsamps is extracted and returned.  The output 
-%              is normalized by setting the variance of the 
+%              central nsamps*nsamps is extracted and returned.  
+%              The output is normalized by setting the variance of the 
 %              (nsamps*oversamp)^2 image to 1.
 %
 %              A pre-generated noise array can be passed in.  If the noise
@@ -40,7 +40,7 @@ function cnoise = oneoverf_noise2(nsamps, oversamp, alpha, arg4, arg5)
 %
 % MAT-files required: none
 %
-% See also: onveoverf_noise.m
+% See also: onveoverf_noise.m, oneoverf_char.m
 %
 % Author: Jared R. Males
 % email: jaredmales@gmail.com

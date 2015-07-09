@@ -40,7 +40,7 @@ function cnoise = oneoverf_noise(nsamps, oversamp, alpha, arg4, arg5)
 %
 % MAT-files required: none
 %
-% See also: char_oneoverf.m
+% See also: oneoverf_char.m
 %
 % Author: Jared R. Males
 % email: jaredmales@gmail.com

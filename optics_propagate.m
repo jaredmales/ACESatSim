@@ -35,7 +35,8 @@ for j = 1:length(sources)
 
       % Propagate from invPIAA2 to invPIAA1
       PIAA.M1inv.E = interp2(PIAA.M2inv.xx, PIAA.M2inv.yy, PIAA.M2inv.E./PIAA.M2.AA , PIAA.M1inv.rremap.*cos(PIAA.M1inv.ttheta), PIAA.M1inv.rremap.*sin(PIAA.M1inv.ttheta), 'cubic');
-
+      PIAA.M1inv.E(isnan(PIAA.M1inv.E)) = 0;
+      
       exitpup = PIAA.M1inv;
       exitpup.E = exitpup.E.*(exitpup.rr < 0.95*exitpup.Dx/2);
     end

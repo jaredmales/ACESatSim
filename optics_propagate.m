@@ -34,7 +34,7 @@ for j = 1:length(sources)
       PIAA.M2inv.E = PIAA.M2inv.E.*(PIAA.M2.rr < 1*PIAA.M2.Dx/2);
 
       % Propagate from invPIAA2 to invPIAA1
-      PIAA.M1inv.E = interp2(PIAA.M2inv.xx, PIAA.M2inv.yy, PIAA.M2inv.E./PIAA.M2.AA, PIAA.M1inv.rremap.*cos(PIAA.M1inv.ttheta), PIAA.M1inv.rremap.*sin(PIAA.M1inv.ttheta), 'cubic');
+      PIAA.M1inv.E = interp2(PIAA.M2inv.xx, PIAA.M2inv.yy, PIAA.M2inv.E./PIAA.M2.AA , PIAA.M1inv.rremap.*cos(PIAA.M1inv.ttheta), PIAA.M1inv.rremap.*sin(PIAA.M1inv.ttheta), 'cubic');
 
       exitpup = PIAA.M1inv;
       exitpup.E = exitpup.E.*(exitpup.rr < 0.95*exitpup.Dx/2);

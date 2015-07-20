@@ -4,20 +4,22 @@ function [cnoise, cube] = oneoverf_noise3(space_nsamps, space_oversamp, space_al
 % Description: Creates a cube of 1/f^alpha noise, with possibly different
 %              alpha in space (dims 1 and 2) and time (dim 3). 
 %
-%              First uses oneoverf_noise.m to generate a time-series at each
-%              spatial position with time_alpha.  Then use
-%              oneoverf_noise2.m to filter each plane with space_alpha.
+%              First uses oneoverf_noise2.m to generate a 2D image at each
+%              point in the time-series, with a 1/f PSD given by 
+%              space_alpha. Then uses oneoverf_noise.m to filter each 
+%              spatial point with time_alpha.
 %              As in oneoverf_noise.m, the oversampling 
 %              factors are used to add low-spatial frequency information to
 %              the noise, and avoid edge effects.  In both time and space 
 %              a noise field of size nsamps*oversamp is generated and 
 %              filtered, and then the central nsamps is extracted and 
 %              returned.  The output is normalized by setting the variance 
-%              in each of the space_nsamps*space_oversamps plane to 1.
+%              in each of the time_nsamps*time_oversamps plane to 1.
 %
 % References: See "Generalized Noll Analysis..." by Jared Males
 %
 % Syntax:  cnoise = oneoverf_noise3(space_nsamps, space_oversamp, space_alpha, time_nsamps, time_oversamp, time_alpha)
+%          cnoise = oneoverf_noise3(space_nsamps, space_oversamp, space_alpha, time_nsamps, time_oversamp, time_alpha, distspec)
 %
 % Inputs:
 %    space_nsamps   - the spatial dimension, output will be
@@ -39,7 +41,7 @@ function [cnoise, cube] = oneoverf_noise3(space_nsamps, space_oversamp, space_al
 %
 % MAT-files required: none
 %
-% See also: char_oneoverf.m
+% See also: oneoverf_char.m
 %
 % Author: Jared R. Males
 % email: jaredmales@gmail.com

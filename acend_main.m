@@ -80,7 +80,7 @@ Ag1 = aCEND_albedo(bandno, 'earth');
 Ag2 = aCEND_albedo(bandno, 'rmars');
 Ag3 = aCEND_albedo(bandno, 'venus');
 
-planet = planet_initialize(stars(1), 1.0, Ag1, orbitPlanet, ts/86400.);
+planet = planet_initialize(stars(1), 11.0, Ag1, orbitPlanet, ts/86400.);
 planet2 = planet_initialize(stars(1), 1., Ag2, orbitPlanet2, ts/86400.);
 planet3 = planet_initialize(stars(1), 0.95, Ag3, orbitPlanet3, ts/86400.0);
 noplanet = planet_initialize(stars(1), 1.0, 0, orbitPlanet, ts/86400.);

@@ -1,6 +1,6 @@
 function filter = aCEND_filters(bandno)
 
-filter.bandno = bandno
+filter.bandno = bandno;
 
 switch bandno
    case 1

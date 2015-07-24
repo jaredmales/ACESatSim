@@ -2,7 +2,7 @@
 %theory.
 
 alpha = 0:0.25:4.0;
-alpha(3)=1.001;
+%alpha(3)=1.001;
 
 nsamp = 1024;
 

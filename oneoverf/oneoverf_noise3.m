@@ -14,7 +14,7 @@ function [cnoise, cube] = oneoverf_noise3(space_nsamps, space_oversamp, space_al
 %              a noise field of size nsamps*oversamp is generated and 
 %              filtered, and then the central nsamps is extracted and 
 %              returned.  The output is normalized by setting the variance 
-%              in each of the time_nsamps*time_oversamps plane to 1.
+%              in each of the time_nsamps*time_oversamps planes to 1.
 %
 % References: See "Generalized Noll Analysis..." by Jared Males
 %

@@ -141,7 +141,8 @@ for n = 1:Nframes
     
     %Set current abberation
     nsamp = ts(n)/dt+1;
-    abber = fits_read(sprintf('%s/frame_%05d.fits', phase_dir, nsamp));    
+    %abber = fits_read(sprintf('%s/frame_%05d.fits', phase_dir, nsamp));
+    abber = 1.0;
     optics.primary.aberrations = abber* mirror_figure;
     
     %compute science frame

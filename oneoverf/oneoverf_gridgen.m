@@ -9,8 +9,8 @@ space_oversamp = 2;
 space_alpha = 3.0;
 
 time_nsamp = 365.25*2.*24.*3.;
-time_oversamp = 64;
-time_alphas = [0., 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0];
+time_oversamp = 4;
+time_alphas = [ 3.0];
 
 
 %edit no more!
@@ -36,6 +36,8 @@ head{4,1} = 'TIMEALFA';
 head{4,3} = 'Time alpha';
 
 
+    
+
 laststr = 0;
 for i=1:length(time_alphas)
 
@@ -45,9 +47,15 @@ for i=1:length(time_alphas)
     
     cnoise=oneoverf_noise3(space_nsamp, space_oversamp, space_alpha, time_nsamp, time_oversamp, time_alphas(i));
     
-    fname = sprintf('%s_%f.fits', basename, time_alphas(i));
+    sz = size(cnoise);
+
+    folderout=sprintf('%s_%f',basename, time_alphas(i));
+    mkdir(folderout);
+    for j=1:sz(3)
+        fname = sprintf('%s_%f/frame_%05d.fits', basename, time_alphas(i),j);
     
-    fits_write(fname, cnoise, head);
+        fits_write(fname, cnoise(:,:,j), head);
+    end
 end
 
 status_line('', laststr);
